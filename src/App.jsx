@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getDepartures } from './api/getDepartures.js';
 import DeparturesBoard from './components/DeparturesBoard.jsx';
+import ThemeToggle from './components/ThemeToggle.jsx';
 
 export default function App() {
   const [flights, setFlights] = useState(null);
@@ -20,6 +21,7 @@ export default function App() {
       <header className="app__header">
         <h1>SkyWatch</h1>
         <p className="app__tagline">Live departures from Hack the Skies International</p>
+        <ThemeToggle />
       </header>
       {/* TODO: nothing is shown while flights are loading, and errors are ignored. */}
       {flights && <DeparturesBoard flights={flights} />}
