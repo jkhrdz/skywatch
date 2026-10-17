@@ -1,9 +1,13 @@
+import TypewriterText from './TypewriterText.jsx';
+
 const STATUS_CLASS = {
   'On time': 'status--ontime',
   Boarding: 'status--boarding',
   Delayed: 'status--delayed',
   Cancelled: 'status--cancelled',
 };
+
+const statusClass = (status) => STATUS_CLASS[status] ?? '';
 
 export default function DeparturesBoard({ flights }) {
   if (flights.length === 0) {
@@ -29,7 +33,9 @@ export default function DeparturesBoard({ flights }) {
             <td>{flight.flight}</td>
             <td>{flight.destination}</td>
             <td>{flight.gate}</td>
-            <td className={STATUS_CLASS[flight.status] ?? ''}>{flight.status}</td>
+            <td>
+              <TypewriterText text={flight.status} classNameFor={statusClass} />
+            </td>
           </tr>
         ))}
       </tbody>

@@ -73,6 +73,29 @@ body {
   color: var(--muted);
 }
 
+/* Hidden on screen but still read out by screen readers. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* A blinking cursor while a status is being erased or typed. */
+.typewriter--busy::after {
+  content: '▌';
+  margin-left: 1px;
+  animation: blink 0.6s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 .status--ontime {
   color: var(--green);
 }

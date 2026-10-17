@@ -17,6 +17,14 @@ describe('DeparturesBoard', () => {
     expect(screen.getAllByRole('row')).toHaveLength(3);
   });
 
+  it('shows each status in full on first load, in its colour', () => {
+    render(<DeparturesBoard flights={flights} />);
+
+    const delayed = screen.getByText('Delayed', { selector: '.visually-hidden' }).parentElement;
+    expect(delayed).toHaveClass('status--delayed');
+    expect(delayed).toHaveTextContent('Delayed');
+  });
+
   it('shows a friendly message when there are no flights', () => {
     render(<DeparturesBoard flights={[]} />);
 
